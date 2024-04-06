@@ -7,7 +7,7 @@ const { watch, labels, unwatch, history } = require('./gmail-watch');
 
 const PROJECT_ID = process.env.PROJECT_ID;
 const TOPIC_NAME = process.env.TOPIC_NAME;
-const CREDENTIALS_PATH = path.join(process.cwd(), 'pubsub_credentials.json');
+const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials/pubsub_credentials.json');
 const WEBHOOK_URL = process.env.WEBHOOK_URL;
 
 async function main() {
@@ -40,8 +40,8 @@ async function main() {
 			if (payload.historyId) {
 				const data = await history(historyId);
 
-				if (data.history?.length) {
-					const messages = data.history.flatMap(item => item.messages);
+				const messages = data.history?.flatMap(item => item.messages);
+				if (messages?.length) {
 					console.log('messages', messages);
 					await fetch(WEBHOOK_URL, {
 						method: 'POST',

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  gmail-listener:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./credentials:/app/credentials

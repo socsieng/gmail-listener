@@ -4,15 +4,16 @@
   "description": "Listens for new gmail messages",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "auth": "node src/auth.js",
+    "labels": "node src/labels.js",
+    "start": "node src/index.js"
   },
   "author": "socsieng",
   "license": "Apache-2.0",
   "dependencies": {
-    "@google-cloud/local-auth": "^3.0.1",
     "@google-cloud/pubsub": "^4.3.3",
     "dotenv": "^16.4.5",
+    "google-auth-library": "^9.7.0",
     "googleapis": "^134.0.0"
   },
   "devDependencies": {
